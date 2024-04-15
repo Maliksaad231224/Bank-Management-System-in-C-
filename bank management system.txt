@@ -1,0 +1,565 @@
+
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <windows.h>
+#include <iomanip>
+#include <ctime>
+#include <cstdlib>
+#include<conio.h>
+#include<algorithm>
+#include<vector>
+#include<stdlib.h>
+using namespace std;
+
+class diamond {
+private:
+    int i;
+    int j;
+    int k;
+public:
+    void d()
+    {
+
+        system("color 0A");
+        for (i = 1; i < 18; i++)
+        {
+            for (j = 1; j <= 20 - i; j++)
+            {
+                cout << setw(3) << " ";
+            }
+            for (k = 1; k <= 2 * i - 1; k++) {
+
+                cout << setw(3) << "*";
+
+            }
+            cout << endl;
+        }
+        cout << "\t-------------------------------------------------------------------------------------------------------" << endl;
+        for (i = 18; i >= 1; i--)
+        {
+
+            for (j = 1; j <= 20 - i; j++)
+            {
+                cout << setw(3) << " ";
+            }
+            for (k = 1; k <= 2 * i - 1; k++) {
+                cout << setw(3) << "*";
+
+            }
+            cout << endl;
+        }
+    }
+
+};
+struct Bank
+{
+    string namee;
+    string cnic;
+    string input;
+    string email;
+    string connum; // contact number
+    int amount = 0;
+    int creditno;
+    int password;
+
+    int pass() {
+        srand(time(NULL));
+        int pass = rand() % 10000 + 1000;
+        return pass;
+    }
+
+
+    void color(int color)
+    {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+    }
+
+    void gotoxy(int x, int y)
+    {
+        COORD c;
+        c.X = x;
+        c.Y = y;
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+    }
+
+    void info()
+    {
+        cout << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+        cout << "\t\t\t\t\tEnter your Good Name = ";
+        getline(cin, namee);
+        cout << endl;
+        cout << "\t\t\t\t\tEnter your CNIC = ";
+        getline(cin, cnic);
+        cout << endl;
+        cout << "\t\t\t\t\tEnter your Email = ";
+        getline(cin, email);
+        cout << endl;
+        cout << "\t\t\t\t\tEnter your Contact number = ";
+        getline(cin, connum);
+        cout << endl;
+
+        cout << "\t\t\t\t\t You Password is = ";
+        password = pass();
+        cout << password << endl;
+
+    }
+    void displayMenu(int counter, const string MenuNames[], const int NUM_MENU_ITEMS)
+    {
+
+        int consoleWidth = 170;
+
+        for (int j = 0; j < NUM_MENU_ITEMS; ++j)
+        {
+
+            int x = (consoleWidth - MenuNames[j].length() - 4) / 3;
+            gotoxy(x, 7 + j);
+            color(7);
+
+            cout << MenuNames[j];
+        }
+        int x = (consoleWidth - MenuNames[counter - 1].length() - 4) / 3;
+
+
+        gotoxy(x, 7 + counter - 1);
+
+        cout << MenuNames[counter - 1];
+
+    }
+
+
+    void menu()
+    {
+
+        diamond d;
+        d.d();
+
+
+        Sleep(4000);
+        system("cls");
+
+        cout << endl;
+        cout << " \t\t\t\t\t \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2" << endl;
+        cout << " \t\t\t\t\t \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2" << endl;
+        cout << " \t\t\t\t\t \xB2\xB2\xB2\xB2\xB2\xB2 MAIN MENU TRANSACTION \xB2\xB2\xB2\xB2\xB2" << endl;
+        cout << " \t\t\t\t\t \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2" << endl;
+        cout << " \t\t\t\t\t \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2" << endl;
+        cout << endl << endl;
+    }
+
+    void clearMenu(int counter, const string MenuNames[], const int NUM_MENU_ITEMS)
+    {
+        system("Pause");
+        system("Cls");
+        displayMenu(counter, MenuNames, NUM_MENU_ITEMS);
+    }
+    void display()
+    {
+        cout << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+        cout << "\t\t\t\t\tYour name is " << namee << endl;
+        cout << "\t\t\t\t\tYour CNIC is " << cnic << endl;
+        cout << "\t\t\t\t\tYour EMAIL is " << email << endl;
+        cout << "\t\t\t\t\tYour Contact Number is " << connum << endl;
+        cout << "\t\t\t\t\tYour Current Amount is " << amount << endl;
+        cout << "\t\t\t\t\tYour credit card number is = " << creditno << endl;
+    }
+};
+
+int main()
+{
+
+    Bank b;
+
+    diamond d;
+    b.menu();
+    const int NUM_MENU_ITEMS = 8;
+    int Set[NUM_MENU_ITEMS] = { 7, 7, 7, 7, 7, 7, 7, 7 }; // default color
+    int counter = 1;
+    int key = 0;
+    string MenuNames[NUM_MENU_ITEMS] = {
+       "Create Account",
+       "Deposit",
+       "Withdraw",
+       "Check Balance",
+       "Update Record",
+       "Delete Record",
+       "Search Record",
+       "Exit ATM"
+    };
+
+
+
+    do
+    {
+
+
+        b.displayMenu(counter, MenuNames, NUM_MENU_ITEMS);
+
+        key = _getch();
+        if (key == 72 && counter > 1) // 72 = up arrow key
+        {
+            counter--;
+        }
+        if (key == 80 && counter < NUM_MENU_ITEMS) // 80 = down arrow key
+        {
+            counter++;
+        }
+
+        // Automatically perform the action when an option is selected
+        if (key == '\r')
+        {
+
+
+            b.displayMenu(counter, MenuNames, NUM_MENU_ITEMS);
+
+
+
+            if (counter == 1) // account create
+            {
+
+
+                b.info();
+                fstream B("Bank.txt", ios::app | ios::in | ios::out);
+                B.write((char*)&b, sizeof(b));//B.write(buffer,sizeof)
+                B.close();
+                Sleep(2000);
+                b.clearMenu(counter, MenuNames, NUM_MENU_ITEMS);
+            }
+            else if (counter == 2) // deposit
+            {
+
+                int p;
+                int am = 0;
+                int flag = 0;
+                cout << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+                cout << "\t\t\t\t\tEnter Your Password =  ";
+                cin >> p;
+
+                fstream u("Bank.txt", ios::in | ios::out | ios::app);
+                fstream temp("Bank1.txt", ios::app | ios::out | ios::in);
+
+                while (u.read((char*)&b, sizeof(b)))
+                {
+                    if (p == b.password)
+                    {
+
+                        cout << "\t\t\t\t\tName of Account holder is = " << b.namee << endl;
+                        cout << "\t\t\t\t\tYour Current Amount is = " << b.amount << endl;
+                        cout << "\t\t\t\t\tEnter your Deposit Amount = ";
+                        cin >> am;
+                        cin.ignore();
+
+
+                        b.amount += am;
+
+                        cout << "\t\t\t\t\tName of Account holder is = " << b.namee << endl;
+                        cout << "\t\t\t\t\tYour Current Amount is = " << b.amount << endl;
+
+                        temp.write((char*)&b, sizeof(b));
+                        flag++;
+                    }
+                    else
+                    {
+                        temp.write((char*)&b, sizeof(b));
+                    }
+                }
+
+                u.close();
+                temp.close();
+
+                remove("Bank.txt");
+                rename("Bank1.txt", "Bank.txt");
+
+                if (flag == 0)
+                {
+                    system("color 0c");
+                    cout << "\t\t\t\t\tNo record found. Please re-enter.\n";
+                }
+
+                Sleep(2000);
+                b.clearMenu(counter, MenuNames, NUM_MENU_ITEMS);
+            }
+
+            else if (counter == 3) // withdraw
+            {
+
+                int p;
+                int am = 0;
+                int flag = 0;
+                cout << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+                cout << "\t\t\t\t\tEnter Your Password =  ";
+                cin >> p;
+
+                fstream u("Bank.txt");
+                fstream temp("Bank1.txt", ios::app | ios::out);
+
+                while (u.read((char*)&b, sizeof(b)))
+                {
+                    if (p == b.password)
+                    {
+                        cout << "\t\t\t\t\tName of Account holder is = " << b.namee << endl;
+                        cout << "\t\t\t\t\tYour Current Amount is = " << b.amount << endl;
+
+                        do
+                        {
+                            cout << "\t\t\t\t\tEnter Withdraw Amount: ";
+                            cin >> am;
+                            if (am > b.amount)
+                            {
+                                cerr << "\t\t\t\t\tError: Amount withdrawn is more than the current amount. Try again.\n";
+                            }
+                        } while (am > b.amount);
+
+                        b.amount -= am;
+                        cout << endl;
+                        cout << "\t\t\t\t\tName of Account holder is = " << b.namee << endl;
+                        cout << "\t\t\t\t\tYour Current Amount is = " << b.amount << endl;
+
+                        temp.write((char*)&b, sizeof(b));
+                        flag++;
+                    }
+                    else
+                    {
+                        temp.write((char*)&b, sizeof(b));
+                    }
+                }
+
+                u.close();
+                temp.close();
+
+                remove("Bank.txt");
+                rename("Bank1.txt", "Bank.txt");
+
+                if (flag == 0)
+                {
+                    system("color 0c");
+                    cerr << "\t\t\t\t\tNo record found. Please re-enter.\n";
+                }
+
+                Sleep(2000);
+                b.clearMenu(counter, MenuNames, NUM_MENU_ITEMS);
+            }
+
+            else if (counter == 4) // check balance
+            {
+
+                int p;
+                int flag = 0;
+                cout << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+                cout << "\t\t\t\t\tEnter Your Password = ";
+                cin >> p;
+                fstream u("Bank.txt", ios::app | ios::in | ios::out);
+                while (u.read((char*)&b, sizeof(b)))
+                {
+                    if (p == b.password)
+                    {
+                        cout << "\t\t\t\t\tYour Balance is " << b.amount;
+                        flag++;
+                    }
+                }
+                u.close();
+                if (flag == 0)
+                {
+                    system("color 0c");
+                    cout << "\t\t\t\t\tNo record found. Please re-enter.\n";
+                }
+                Sleep(2000);
+                b.clearMenu(counter, MenuNames, NUM_MENU_ITEMS);
+            }
+            else if (counter == 5) // update
+            {
+
+                int p;
+                int flag = 0;
+                char k, m = '/1';
+                cout << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+                cout << "\t\t\t\t\tEnter Your Password = ";
+                cin >> p;
+                fstream u("Bank.txt");
+                fstream temp("Bank1.txt", ios::app | ios::out);
+                while (u.read((char*)&b, sizeof(b)))
+                {
+                    if (p == b.password)
+                    {
+                        b.display();
+                        cout << endl;
+                        cout << "\t\t\t\t\t======================================== " << endl;
+                    z:;
+                        cout << "\t\t\t\t\tTo Update First Name . please (press f) " << endl;
+                        cout << "\t\t\t\t\tTo Update CNIC. please (press c)" << endl;
+                        cout << "\t\t\t\t\tTo Update EMAIL . please (press e)" << endl;
+                        cout << "\t\t\t\t\tTo Update Contact Number  . please (press n) " << endl;
+
+                        cin >> k;
+                        if (k == 'f')
+                        {
+                            cout << "\t\t\t\t\tEnter your new name = ";
+                            cin >> b.namee;
+                            cout << "\t\t\t\t\tName of Account holder is " << b.namee;
+                        }
+                        else if (k == 'c')
+                        {
+                            cout << "\t\t\t\t\tEnter your new CNIC = ";
+                            cin >> b.cnic;
+                            cout << "\t\t\t\t\tYour New Cnic is = " << b.cnic;
+                        }
+                        else if (k == 'e')
+                        {
+                            cout << "\t\t\t\t\tEnter your new EMAIL = ";
+                            cin >> b.email;
+                            cout << "\t\t\t\t\tYour New Email is = " << b.email;
+                        }
+                        else if (k == 'n')
+                        {
+                            cout << "\t\t\t\t\tEnter your new phone number = ";
+                            cin >> b.connum;
+                            cout << "\t\t\t\t\tYour new Phone Number is = " << b.connum;
+                        }
+                        temp.write((char*)&b, sizeof(b));
+                        flag++;
+                    }
+                    else
+                    {
+                        temp.write((char*)&b, sizeof(b));
+                    }
+                }
+                u.close();
+                temp.close();
+                remove("Bank.txt");
+                rename("Bank1.txt", "Bank.txt");
+                if (flag == 0)
+                {
+                    system("color 0c");
+                    cout << "\t\t\t\t\tNo record found. Please re-enter.\n";
+                }
+                Sleep(2000);
+                b.clearMenu(counter, MenuNames, NUM_MENU_ITEMS);
+            }
+            else if (counter == 6) // delete record
+            {
+
+                string nam;
+                int p;
+                int flag = 0;
+                char confirm;
+
+                cout << endl << endl << endl << endl << endl << endl  ;
+
+                cout << "\t\t\t\t\t\t\tEnter Your Password: ";
+                cin >> p;
+
+                vector<Bank>del;
+                fstream u("Bank.txt", ios::binary|ios::in);
+
+                while (u.read((char*)&b, sizeof(b)))
+                {
+                    del.push_back(b);
+                }
+                u.close();
+
+                for (int i = 0; i < del.size(); i++) {
+                    if (del[i].password == p) {
+                        cout << "\t\t\t\t\tName of Account holder is = " << b.namee << endl;
+                        cout << "\t\t\t\t\t Your current Amount is = " << b.amount << endl;
+                        cout << "\t\t\t\t\t Do you wish to Delete Your Account('Y' for YES) ";
+                        cin >> confirm;
+                        if (confirm == 'Y' || confirm == 'y') {
+
+                            del.erase(del.begin() + i);
+
+                            flag++;
+                            break;
+                        }
+                        else {
+                            cout << "\t\t\t\t\tTHANK YOU FOR RETAINING OUR SERVICES";
+                        }
+                    }
+                    else {
+                        system("color 0c");
+                        cerr << "/t/t/t/t/t NO SUCH ACCOUNT EXISTS !!!";
+                    }
+
+                }
+                if (flag == 1) {
+                    fstream u("Bank.txt", ios::binary | ios::trunc | ios::out);
+                    for (const Bank& record : del) {
+                        u.write((char*)&record, sizeof(record));
+                    }
+
+                    u.close();
+
+                    cout << "\t\t\t\t\t Account Deleted Successfully " << endl;
+                }
+
+
+
+                Sleep(2000);
+                b.clearMenu(counter, MenuNames, NUM_MENU_ITEMS);
+            }
+            else if (counter == 7)//Search record
+            {
+
+                int p;
+                string nam;
+                int flag = 0;
+                cout << endl << endl << endl;
+                cout << "\t\t\t\t\tEnter Your Password = ";
+                cin >> p;
+                fstream u("Bank.txt", ios::in);
+                while (u.read((char*)&b, sizeof(b)))
+                {
+                    if (p == b.password)
+                    {
+                        b.display();
+                        flag++;
+
+                    }
+
+                }
+                if (flag == 0) {
+                    system("color 0c");
+                    cout << "\t\t\t\t\t!!!!!NO RECORDS FOUND!!!!!\n";
+                }
+                u.close();
+
+                Sleep(2000);
+                b.clearMenu(counter, MenuNames, NUM_MENU_ITEMS);
+            }
+            else if (counter == 8)//exiting the bank
+            {
+
+                system("color 0A");
+                cout << endl;
+                cout << endl << endl << endl << endl;
+                
+                cout << " \t\t\t\t \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 THANK YOU FOR VISITING OUR BANK \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2";
+               
+                cout << endl;
+                cout << "\t\t\t\t\t";
+
+                system("Pause");
+                system("Cls");
+                d.d();
+                exit(0);
+            }
+            else {
+                cout << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+                system("color 0c");
+                cout << "\t\t\t\t\t Invalid Entry . Try Again " << endl;
+                Sleep(2000);
+                b.clearMenu(counter, MenuNames, NUM_MENU_ITEMS);
+            }
+        }
+    } while (key != 9 && key != 0);
+
+
+
+
+
+
+
+
+    return 0;
+}
+
